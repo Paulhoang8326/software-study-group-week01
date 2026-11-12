@@ -1,49 +1,53 @@
-# Software Study Group — Week 01
+# Software Study Group
 
-**Topic:** Software Fundamentals & Database Design  
-**Hands-on:** Student Course Management (MySQL)
+**Người nộp:** Đỗ Hoàng Anh Tú
 
-Đây là repository nộp bài Week 01 của Software Study Group — GDGoC-UIT. Mỗi thành viên làm bài trên **branch cá nhân** và mở Pull Request để nhận góp ý. Không push trực tiếp lên `main`.
+## Mô tả thiết kế
 
-**Đề bài chi tiết và tài liệu tham khảo:** [Week 01 trên Notion](https://app.notion.com/p/412fb05f1e5b81f28262e06aefbeb0a3)
+### Cơ sở dữ liệu được chia thành 4 bảng chính:
+- **Students**: Lưu trữ thông tin sinh viên (`mssv`, `tenSV`)
+- **Instructors**: Lưu trữ thông tin giảng viên (`maGV`,`tenGV`)
+- **Courses**: Lưu trữ thông tin môn học. Mỗi môn học do một giảng viên phụ trách.
+- **Enrollments**: Lưu trữ thông tin đăng kí môn của sinh viên.
 
-## Yêu cầu chính
+### Các mối quan hệ
 
-Thiết kế cơ sở dữ liệu quản lý sinh viên, môn học, giảng viên và đăng ký môn học bằng **MySQL**.
+- Một giảng viên có thể phụ trách nhiều môn học (1-N).
+- Mỗi môn học được phụ trách bởi một giảng viên (N-1).
+- Một sinh viên có thể đăng ký nhiều môn học (1-N).
+- Một môn học có thể có nhiều sinh viên đăng ký (1-N).
+- Bảng `Enrollments` thể hiện mối quan hệ nhiều-nhiều (N-N) giữa sinh viên và môn học.
 
-- Vẽ ERD, xác định PK, FK và các quan hệ giữa các bảng.
-- Tạo bảng bằng SQL, thiết lập ràng buộc phù hợp và thêm dữ liệu mẫu.
-- Viết 4 truy vấn: sinh viên & môn đã đăng ký; môn của giảng viên; số sinh viên theo môn; sinh viên chưa đăng ký môn nào.
-- Chụp ảnh **câu SQL và kết quả thực thi** của từng truy vấn.
+### Các ràng buộc
 
-Phần nâng cao là tùy chọn; xem chi tiết trong Notion.
+- Mỗi bảng có một khóa chính (Primary Key - PK).
+- Các khóa ngoại (Foreign Key - FK) đảm bảo tính liên kết giữa các bảng.
+- Một sinh viên không thể đăng ký cùng một môn học nhiều lần. Ràng buộc `UNIQUE` được sử dụng trên hai cột `(mssv, maMH)` để đảm bảo điều này.
 
-## Cách làm và nộp bài
+## Cách chạy SQL
 
-1. Gửi **GitHub username và email** cho người phụ trách để được mời vào repository.
-2. Chấp nhận lời mời, clone repository và tạo branch từ `main` theo mẫu `ho-ten-solution` (ví dụ `nguyen-van-a-solution`).
-3. Hoàn thiện bài tập trên branch cá nhân, commit và push lên GitHub.
-4. Tạo **Pull Request**: base `main`, compare là branch cá nhân. Đặt tên `[Week 01] Ho Ten - Database Design`.
-5. Gửi link Pull Request để review. Nếu được yêu cầu sửa bài, hãy tiếp tục push lên cùng branch. **Không tự merge PR.**
+### Yêu cầu
 
-## Cấu trúc bài nộp trên branch cá nhân
+- MySQL Server
+- MySQL Workbench hoặc một công cụ hỗ trợ truy vấn MySQL khác.
 
-```text
-week01-database/
-├── README.md
-├── erd.png                  # hoặc erd.svg
-├── database.sql
-├── queries.sql
-└── screenshots/
-    ├── query-01.png
-    ├── query-02.png
-    ├── query-03.png
-    └── query-04.png
+### Bước 1: Tạo cơ sở dữ liệu
+
+Thực thi câu lệnh SQL sau:
+
+```sql
+CREATE DATABASE StudentCourseManagement;
+USE StudentCourseManagement;
 ```
 
-Trong `README.md` của bài làm, ghi tên người nộp, mô tả thiết kế, cách chạy SQL, phần bonus (nếu có) và nhúng ảnh kết quả trong mục **Query Results**:
+### Bước 2: Tạo bảng và thêm dữ liệu mẫu
 
-```md
+Chạy toàn bộ các câu lệnh trong file `database.sql` theo thứ tự từ trên xuống dưới.
+
+### Bước 3: Thực hiện truy vấn
+
+Chạy 4 câu truy vấn trong file `queries.sql` để lấy các thông tin theo yêu cầu của bài tập.
+
 ## Query Results
 
 ### Query 01 — Student Course List
@@ -57,6 +61,3 @@ Trong `README.md` của bài làm, ghi tên người nộp, mô tả thiết k�
 
 ### Query 04 — Students Without Enrollments
 ![Query 04](screenshots/query-04.png)
-```
-
-> **Lưu ý:** `main` chỉ chứa hướng dẫn. Bài làm ở branch cá nhân và được review qua Pull Request, không merge vào `main`.
