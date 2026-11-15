@@ -1,4 +1,3 @@
--- Active: 1794667649327@@127.0.0.1@3306@student_courses_management
 CREATE DATABASE student_courses_management;
 
 USE student_courses_management;
@@ -10,7 +9,7 @@ CREATE TABLE students (
     birth_date DATE NOT NULL,
     phone_number VARCHAR(15) NOT NULL UNIQUE,
     email VARCHAR(100) NOT NULL UNIQUE
-)
+);
 
 CREATE TABLE instructors (
     instructor_id VARCHAR(10) PRIMARY KEY,
@@ -19,14 +18,14 @@ CREATE TABLE instructors (
     birth_date DATE NOT NULL,
     phone_number VARCHAR(15) NOT NULL UNIQUE,
     email VARCHAR(100) NOT NULL UNIQUE
-)
+);
 
 CREATE TABLE courses (
     course_id VARCHAR(10) PRIMARY KEY,
     course_name NVARCHAR(100) NOT NULL,
     instructor_id VARCHAR(10) NOT NULL,
     FOREIGN KEY (instructor_id) REFERENCES instructors(instructor_id)
-)
+);
 
 CREATE TABLE enrollments (
     enrollment_id INT AUTO_INCREMENT PRIMARY KEY,
@@ -35,7 +34,7 @@ CREATE TABLE enrollments (
     FOREIGN KEY (student_id) REFERENCES students(student_id),
     FOREIGN KEY (course_id) REFERENCES courses(course_id),
     UNIQUE (student_id, course_id)
-)
+);
 
 INSERT INTO students(student_id, full_name, gender, birth_date, phone_number, email) VALUES
 ('25520244', 'Trần Bảo Đăng', 'Male', '2007-09-21', '0123456789', 'tranbaodang@gmail.com'),
