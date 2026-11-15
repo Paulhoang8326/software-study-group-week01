@@ -25,9 +25,16 @@ Cách chạy SQL
 2. Chạy toàn bộ file database.sql theo thứ tự từ trên xuống để khởi tạo bảng và nạp dữ liệu mẫu.
 3. Chạy file queries.sql để kiểm tra kết quả của 4 câu truy vấn theo yêu cầu.
 
-Query Results
+4. Query Results
 
-[![Query 01](screenshots/query-01.png)](screenshots/query-01.png)
-[![Query 02](screenshots/query-02.png)](screenshots/query-02.png)
-[![Query 03](screenshots/query-03.png)](screenshots/query-03.png)
-[![Query 04](screenshots/query-04.png)](screenshots/query-04.png)
+**1. Query 01: Liệt kê tên sinh viên và tên các môn đã đăng ký.**
+<a href="screenshots/query-01.png"><img src="screenshots/query-01.png" width="600"></a>
+
+**2. Query 02: Liệt kê các môn do 'GV02' cụ thể phụ trách.**
+<a href="screenshots/query-02.png"><img src="screenshots/query-02.png" width="600"></a>
+
+**3. Query 03: Đếm số sinh viên đăng ký từng môn, kể cả môn chưa có người đăng ký.**
+<a href="screenshots/query-03.png"><img src="screenshots/query-03.png" width="600"></a>
+
+**4. Query 04: Tìm sinh viên chưa đăng ký bất kỳ môn nào.**
+<a href="screenshots/query-04.png"><img src="screenshots/query-04.png" width="600"></a>
