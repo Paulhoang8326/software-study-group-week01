@@ -1,62 +1,54 @@
-# Software Study Group — Week 01
+# GDGoC-UIT | Software Study Group
 
-**Topic:** Software Fundamentals & Database Design  
-**Hands-on:** Student Course Management (MySQL)
+Repo bài tập của Software Study Group (GDGoC-UIT). Mỗi tuần có một đề, một thư mục nộp bài, và nộp bằng Pull Request.
 
-Đây là repository nộp bài Week 01 của Software Study Group — GDGoC-UIT. Mỗi thành viên làm bài trên **branch cá nhân** và mở Pull Request để nhận góp ý. Không push trực tiếp lên `main`.
+> `main` chỉ chứa đề bài. Bài làm của bạn nằm ở branch cá nhân, **không push trực tiếp lên `main`**.
 
-**Đề bài chi tiết và tài liệu tham khảo:** [Week 01 trên Notion](https://app.notion.com/p/412fb05f1e5b81f28262e06aefbeb0a3)
+## Danh sách tuần
 
-## Yêu cầu chính
+| Tuần | Chủ đề | Đề bài | Thư mục nộp | Deadline |
+| --- | --- | --- | --- | --- |
+| 01 | Software fundamentals & database design | [week01/task-week01.md](week01/task-week01.md) | `week01-database/` | 23h 15/11/2026 |
+| 02 | REST API & backend basics | [week02/task-week02.md](week02/task-week02.md) | `week02-api/` | 23h 22/11/2026 |
 
-Thiết kế cơ sở dữ liệu quản lý sinh viên, môn học, giảng viên và đăng ký môn học bằng **MySQL**.
+Đề các tuần tiếp theo sẽ được thêm vào bảng này.
 
-- Vẽ ERD, xác định PK, FK và các quan hệ giữa các bảng.
-- Tạo bảng bằng SQL, thiết lập ràng buộc phù hợp và thêm dữ liệu mẫu.
-- Viết 4 truy vấn: sinh viên & môn đã đăng ký; môn của giảng viên; số sinh viên theo môn; sinh viên chưa đăng ký môn nào.
-- Chụp ảnh **câu SQL và kết quả thực thi** của từng truy vấn.
+## Quy trình nộp bài (áp dụng cho mọi tuần)
 
-Phần nâng cao là tùy chọn; xem chi tiết trong Notion.
+1. Chưa có quyền vào repo: gửi cho mình **email và GitHub username ở trong kênh chat discord** để mình mời. Kiểm tra lời mời trên GitHub và chọn **Accept invitation**.
+2. Clone repo về máy.
+3. Mỗi tuần tạo **một branch riêng từ `main`**, đặt theo tên của bạn (không dấu, chữ thường, dùng dấu gạch ngang) kèm tuần, ví dụ `nguyen-van-a-week02`. Tuần 1 dùng `nguyen-van-a-solution` như đề đã hướng dẫn.
+4. Làm bài trong đúng thư mục của tuần đó (xem bảng trên), commit và push lên branch của mình.
+5. Mở Pull Request vào `main`:
+   - **Base:** `main`
+   - **Compare:** branch của bạn
+   - **Title:** `[Week XX] Ho Ten - Ten bai`, ví dụ `[Week 02] Nguyen Van A - REST API`
+   - **Description:** đã hoàn thành những mục nào, bonus (nếu có), khó khăn hoặc câu hỏi cần hỗ trợ.
+6. **Không tự merge PR** và không sửa branch của bạn khác.
 
-## Cách làm và nộp bài
+## Quy tắc chung
 
-1. Gửi **GitHub username và email** cho người phụ trách để được mời vào repository.
-2. Chấp nhận lời mời, clone repository và tạo branch từ `main` theo mẫu `ho-ten-solution` (ví dụ `nguyen-van-a-solution`).
-3. Hoàn thiện bài tập trên branch cá nhân, commit và push lên GitHub.
-4. Tạo **Pull Request**: base `main`, compare là branch cá nhân. Đặt tên `[Week 01] Ho Ten - Database Design`.
-5. Gửi link Pull Request để review. Nếu được yêu cầu sửa bài, hãy tiếp tục push lên cùng branch. **Không tự merge PR.**
+- Mỗi bài có `README.md` riêng trong thư mục nộp: thông tin người nộp, mô tả bài làm, cách chạy, phần bonus (nếu có).
+- Không commit mật khẩu, token, file `.env` thật. Nếu bài cần cấu hình thì commit file mẫu `.env.example`.
+- Kết quả chạy thử (ảnh chụp màn hình) để trong `screenshots/` và nhúng vào `README.md` của bài.
+- Phần nâng cao là tùy chọn. Làm đủ yêu cầu bắt buộc trước.
+- Kẹt chỗ nào thì ghi vào Description của PR hoặc hỏi ở kênh discord, đừng để quá deadline mới hỏi.
 
-## Cấu trúc bài nộp trên branch cá nhân
+## Cấu trúc repo
 
-```text
+```
+.
+├── README.md              # file này
+├── week01/
+│   └── task-week01.md     # đề tuần 1
+├── week02/
+│   └── task-week02.md     # đề tuần 2
+└── ...                    # các tuần sau
+```
+
+Thư mục `weekXX/` trên `main` chỉ chứa đề. Trên branch cá nhân, bài làm nằm ở thư mục nộp riêng của tuần đang làm (tên ghi trong bảng ở trên), ví dụ:
+
+```
 week01-database/
-├── README.md
-├── erd.png                  # hoặc erd.svg
-├── database.sql
-├── queries.sql
-└── screenshots/
-    ├── query-01.png
-    ├── query-02.png
-    ├── query-03.png
-    └── query-04.png
+week02-api/
 ```
-
-Trong `README.md` của bài làm, ghi tên người nộp, mô tả thiết kế, cách chạy SQL, phần bonus (nếu có) và nhúng ảnh kết quả trong mục **Query Results**:
-
-```md
-## Query Results
-
-### Query 01 — Student Course List
-![Query 01](screenshots/query-01.png)
-
-### Query 02 — Instructor Courses
-![Query 02](screenshots/query-02.png)
-
-### Query 03 — Enrollment Count
-![Query 03](screenshots/query-03.png)
-
-### Query 04 — Students Without Enrollments
-![Query 04](screenshots/query-04.png)
-```
-
-> **Lưu ý:** `main` chỉ chứa hướng dẫn. Bài làm ở branch cá nhân và được review qua Pull Request, không merge vào `main`.
